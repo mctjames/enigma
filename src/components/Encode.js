@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import "../styles/Encode.css"
 
 function Encode() {
     
@@ -16,11 +17,16 @@ function Encode() {
     const [ringThree, setRingThree] = useState('A')
     const [reflector, setReflector] = useState('UKWB');
 
+    const [style, setStyle] = useState("button")
+    const [styleB, setStyleB] = useState("button")
+
+ 
+
 
 
     useEffect(() => {
         isValidInput(inputMessage);
-    }, [inputMessage, rotorOne, rotorTwo, rotorThree, initPosOne, initPosTwo, initPosThree, ringOne, ringTwo, ringThree, reflector])  //eslint-disable-line react-hooks/exhaustive-deps
+    }, [inputMessage, rotorOne, rotorTwo, rotorThree, initPosOne, initPosTwo, initPosThree, ringOne, ringTwo, ringThree, reflector, style, styleB])  //eslint-disable-line react-hooks/exhaustive-deps
 
     function isValidInput(inputMessage) {
         inputMessage = inputMessage.replace(/\s/g, '');
@@ -269,9 +275,46 @@ function Encode() {
         return(result)
     }
 
+
     var output = encrypt();
     output = output.join("");
     //console.log("output: ", output)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var plugged = [];
+    var plugCounter = 0;
+    function plugBoard(letter) {
+        if(plugCounter > 9){
+            alert("Max number of plug board selections has been reached.")
+            return;
+        } 
+        for(var i = 0; i < plugged.length; i++){
+            if(letter === plugged[i]){
+                alert("That letter has already been selected. Please pick another.")
+                return
+            }
+        }
+
+        setStyle("condition1")
+
+        plugged.push(letter)
+        plugCounter += 1;
+        console.log("plugged: ", plugged, " ", plugCounter, " ", letter)
+
+    }
+
+    
    
 
     return (
@@ -300,9 +343,6 @@ function Encode() {
                         defaultValue={rotorOne}
                         onChange={(event) => setRotorOne(event.target.value)}
                     >
-                            <option value="alphabetRight">alphabetRight</option>
-                            <option value="Alt">Alt</option>
-                            <option value="Alt2">Alt2</option>
                             <option value="I">I</option>
                             <option value="II">II</option>
                             <option value="III">III</option>
@@ -316,9 +356,6 @@ function Encode() {
                         defaultValue={rotorTwo}
                         onChange={(event) => setRotorTwo(event.target.value)}
                     >
-                            <option value="defaultAlfa">defaultAlfa</option>
-                            <option value="Alt">Alt</option>
-                            <option value="Alt2">Alt2</option>
                             <option value="I">I</option>
                             <option value="II">II</option>
                             <option value="III">III</option>
@@ -332,9 +369,6 @@ function Encode() {
                         defaultValue={rotorThree}
                         onChange={(event) => setRotorThree(event.target.value)}
                     >
-                            <option value="defaultAlfa">defaultAlfa</option>
-                            <option value="Alt">Alt</option>
-                            <option value="Alt2">Alt2</option>
                             <option value="I">I</option>
                             <option value="II">II</option>
                             <option value="III">III</option>
@@ -682,6 +716,38 @@ function Encode() {
                         </tr>
                     </tbody>    
                 </table>
+            </div>
+
+            <div>
+                <h3>Alt PlugBoard </h3>
+                <button onClick={() => plugBoard("A")}  className={style} >A</button>
+                <button onClick={() => plugBoard("B")}  className={styleB} >B</button>
+                <button onClick={() => plugBoard("C")}  className={style} >C</button>
+                <button onClick={() => plugBoard("D")}  className={style} >D</button>
+                <button onClick={() => plugBoard("E")}  className={style} >E</button>
+                <button onClick={() => plugBoard("F")}  className={style} >F</button>
+                <button onClick={() => plugBoard("G")}  className={style} >G</button>
+                <button onClick={() => plugBoard("H")}  className={style} >H</button>
+                <button onClick={() => plugBoard("I")}  className={style} >I</button>
+                <button onClick={() => plugBoard("J")}  className={style} >J</button>
+                <button onClick={() => plugBoard("K")}  className={style} >K</button>
+                <button onClick={() => plugBoard("L")}  className={style} >L</button>
+                <button onClick={() => plugBoard("M")}  className={style} >M</button>
+                <button onClick={() => plugBoard("N")}  className={style} >N</button>
+                <button onClick={() => plugBoard("O")}  className={style} >O</button>
+                <button onClick={() => plugBoard("P")}  className={style} >P</button>
+                <button onClick={() => plugBoard("Q")}  className={style} >Q</button>
+                <button onClick={() => plugBoard("R")}  className={style} >R</button>
+                <button onClick={() => plugBoard("S")}  className={style} >S</button>
+                <button onClick={() => plugBoard("T")}  className={style} >T</button>
+                <button onClick={() => plugBoard("U")}  className={style} >U</button>
+                <button onClick={() => plugBoard("V")}  className={style} >V</button>
+                <button onClick={() => plugBoard("W")}  className={style} >W</button>
+                <button onClick={() => plugBoard("X")}  className={style} >X</button>
+                <button onClick={() => plugBoard("Y")}  className={style} >Y</button>
+                <button onClick={() => plugBoard("Z")}  className={style} >Z</button>
+
+
             </div>
         </div>
     )
