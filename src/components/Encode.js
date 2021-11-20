@@ -277,7 +277,7 @@ function Encode() {
    
 
     return (
-        <div className="Enigma">
+        <div className="">
             <div className="InputSection">
                 <label className="UserInput">Plaintext Input</label>   
                 <p></p>
