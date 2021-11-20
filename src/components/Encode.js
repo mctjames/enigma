@@ -4,11 +4,9 @@ import "../styles/Encode.css"
 function Encode() {
     
     const [inputMessage, setMessage] = useState("");
-    
     const [rotorOne, setRotorOne] = useState('I');
     const [rotorTwo, setRotorTwo] = useState('II');
     const [rotorThree, setRotorThree] = useState('III');
-
     const [initPosOne, setInitPosingOne] = useState('A')
     const [initPosTwo, setInitPosingTwo] = useState('A')
     const [initPosThree, setInitPosingThree] = useState('A')
@@ -17,16 +15,9 @@ function Encode() {
     const [ringThree, setRingThree] = useState('A')
     const [reflector, setReflector] = useState('UKWB');
 
-    const [style, setStyle] = useState("button")
-    const [styleB, setStyleB] = useState("button")
-
- 
-
-
-
     useEffect(() => {
         isValidInput(inputMessage);
-    }, [inputMessage, rotorOne, rotorTwo, rotorThree, initPosOne, initPosTwo, initPosThree, ringOne, ringTwo, ringThree, reflector, style, styleB])  //eslint-disable-line react-hooks/exhaustive-deps
+    }, [inputMessage, rotorOne, rotorTwo, rotorThree, initPosOne, initPosTwo, initPosThree, ringOne, ringTwo, ringThree, reflector, ])  //eslint-disable-line react-hooks/exhaustive-deps
 
     function isValidInput(inputMessage) {
         inputMessage = inputMessage.replace(/\s/g, '');
@@ -281,65 +272,34 @@ function Encode() {
     //console.log("output: ", output)
 
 
-
-
-
-
-
-
-
-
-
-
-
-    var plugged = [];
-    var plugCounter = 0;
-    function plugBoard(letter) {
-        if(plugCounter > 9){
-            alert("Max number of plug board selections has been reached.")
-            return;
-        } 
-        for(var i = 0; i < plugged.length; i++){
-            if(letter === plugged[i]){
-                alert("That letter has already been selected. Please pick another.")
-                return
-            }
-        }
-
-        setStyle("condition1")
-
-        plugged.push(letter)
-        plugCounter += 1;
-        console.log("plugged: ", plugged, " ", plugCounter, " ", letter)
-
-    }
-
+   
     
    
 
     return (
-        <div>
-            <div className="input-section">
-                <label>Code Input</label>   
+        <div className="Enigma">
+            <div className="InputSection">
+                <label className="UserInput">Plaintext Input</label>   
+                <p></p>
                 <input 
-                    className="input-text" 
-                    id="enigma-input" 
+                    className="InputText" 
                     type="text" 
                     placeholder="Input"
                     onChange={(event) => setMessage(event.target.value)}
                 />
             </div>
-            <div className="output-section">
-                <label>Code Output</label> 
+
+            <div className="OutputSection">
+                <label className="UserInput" >Ciphertext</label> 
                 <p style={{color: "red"}}>{output}</p>
             </div>
 
-            <h2>Rotors settings</h2>
-            <div className="settings-subsection">
+            
+            <div className="RotorSettings">
+                <h2>Rotors settings</h2>
                 <label><a href="https://en.wikipedia.org/wiki/Enigma_machine#Rotors">Rotor types (Walzenlage)</a></label>
                     <select 
-                        className="rotor-type-settings" 
-                        id="rotor-type-left"
+                        className="RotorSubSettings" 
                         defaultValue={rotorOne}
                         onChange={(event) => setRotorOne(event.target.value)}
                     >
@@ -351,8 +311,7 @@ function Encode() {
                     </select>
 
                     <select 
-                        className="rotor-type-settings" 
-                        id="rotor-type-middle"
+                        className="RotorSubSettings" 
                         defaultValue={rotorTwo}
                         onChange={(event) => setRotorTwo(event.target.value)}
                     >
@@ -364,8 +323,7 @@ function Encode() {
                     </select>
 
                     <select 
-                        className="rotor-type-settings" 
-                        id="rotor-type-right"
+                        className="RotorSubSettings" 
                         defaultValue={rotorThree}
                         onChange={(event) => setRotorThree(event.target.value)}
                     >
@@ -376,12 +334,11 @@ function Encode() {
                             <option value="V">V</option>
                     </select>
             </div>
-            <div className="settings-subsection">
+            <div className="InitialPosition">
                 <label><a href="https://en.wikipedia.org/wiki/Enigma_rotor_details#Rotor_offset">Initial Position (Grundstellung)</a></label>
 
                 <select 
-                    className="rotor-settings" 
-                    id="rotor-left-pos"
+                    className="InitialSubSettings"
                     defaultValue={initPosOne}
                     onChange={(event) => setInitPosingOne(event.target.value)}
                 >
@@ -414,8 +371,7 @@ function Encode() {
                 </select>
 
                 <select 
-                    className="rotor-settings" 
-                    id="rotor-middle-pos"
+                    className="InitialSubSettings" 
                     defaultValue={initPosTwo}
                     onChange={(event) => setInitPosingTwo(event.target.value)}
                 >
@@ -448,8 +404,7 @@ function Encode() {
                 </select>
 
                 <select 
-                    className="rotor-settings" 
-                    id="rotor-right-pos"
+                    className="InitialSubSettings" 
                     defaultValue={initPosThree}
                     onChange={(event) => setInitPosingThree(event.target.value)}
                 >
@@ -482,12 +437,11 @@ function Encode() {
                 </select>
 
             </div>
-            <div className="settings-subsection">
+            <div className="RingSettings">
                 <label><a href="https://en.wikipedia.org/wiki/Enigma_rotor_details#Ring_setting">Ring settings (Ringstellung)</a></label>
                 
                 <select 
-                    className="ring-settings" 
-                    id="ring-left-pos"
+                    className="RingSubSettings" 
                     defaultValue={ringOne}
                     onChange={(event) => setRingOne(event.target.value)}
                 >
@@ -519,8 +473,7 @@ function Encode() {
                         <option value="Z">Z</option>
                 </select>
                 <select 
-                    className="ring-settings" 
-                    id="ring-middle-pos"
+                    className="RingSubSettings" 
                     defaultValue={ringTwo}
                     onChange={(event) => setRingTwo(event.target.value)}
                 >
@@ -553,8 +506,7 @@ function Encode() {
                 </select>
             
                 <select 
-                    className="ring-settings" 
-                    id="ring-right-pos"
+                    className="RingSubSettings" 
                     defaultValue={ringThree}
                     onChange={(event) => setRingThree(event.target.value)}
                 >
@@ -587,168 +539,20 @@ function Encode() {
                 </select>            
             
             </div>
-            <h2>Reflector settings</h2>
-            <div className="settings-subsection">
+            
+            <div className="ReflectorSettings">
+                <h2>Reflector settings</h2>
                 <label><a href="https://en.wikipedia.org/wiki/Enigma_machine#Reflector">Reflector type (Umkehrwalze)</a></label>
                 <select 
                     defaultValue={"UKWB"} 
-                    className="reflector-settings" 
-                    id="reflector-type"
+                    className="ReflectorSubSettings" 
                     onChange={(event) => setReflector(event.target.value)}
                 >
-                    <option value="UKWB">UkWB</option>
+                    <option value="UKWB">UKWB</option>
                     <option value="UKWC">UKWC</option>
                 </select>
             </div>
-            <h2>Plugboard settings</h2>
-            <div className="settings-subsection">
-                <label><a href="https://en.wikipedia.org/wiki/Enigma_machine#Plugboard">Plugboard connections (Steckerbrett)</a></label>
-                <table className="plugboard-settings">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <label>A</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-A" type="text"/>
-                            </td>
-                            <td>
-                                <label>B</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-B" type="text"/>
-                            </td>
-                            <td>
-                                <label>C</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-C" type="text"/>
-                            </td>
-                            <td>
-                                <label>D</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-D" type="text"/>
-                            </td>
-                            <td>
-                                <label>E</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-E" type="text"/>
-                            </td>
-                            <td>
-                                <label>F</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-F" type="text"/>
-                            </td>
-                            <td>
-                                <label>G</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-G" type="text"/>
-                            </td>
-                            <td>
-                                <label>H</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-H" type="text"/>
-                            </td>
-                            <td>
-                                <label>I</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-I" type="text"/>
-                            </td>
-                            <td>
-                                <label>J</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-J" type="text"/>
-                            </td>
-                            <td>
-                                <label>K</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-K" type="text"/>
-                            </td>
-                            <td>
-                                <label>L</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-L" type="text"/>
-                            </td>
-                            <td>
-                                <label>M</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-M" type="text"/>
-                            </td>
-                            
-                        </tr>
-                        <tr>
-                            <td>
-                                <label>N</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-N" type="text"/>
-                            </td>
-                            <td>
-                                <label>O</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-O" type="text"/>
-                            </td>
-                            <td>
-                                <label>P</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-P" type="text"/>
-                            </td>
-                            <td>
-                                <label>Q</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-Q" type="text"/>
-                            </td>
-                            <td>
-                                <label>R</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-R" type="text"/>
-                            </td>
-                            <td>
-                                <label>S</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-S" type="text"/>
-                            </td>
-                            <td>
-                                <label>T</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-T" type="text"/>
-                            </td>
-                            <td>
-                                <label>U</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-U" type="text"/>
-                            </td>
-                            <td>
-                                <label>V</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-V" type="text"/>
-                            </td>
-                            <td>
-                                <label>W</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-W" type="text"/>
-                            </td>
-                            <td>
-                                <label>X</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-X" type="text"/>
-                            </td>
-                            <td>
-                                <label>Y</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-Y" type="text"/>
-                            </td>
-                            <td>
-                                <label>Z</label>
-                                <input className="plugboard-letter-settings" id="plugboard-letter-Z" type="text"/>
-                            </td>
-                        </tr>
-                    </tbody>    
-                </table>
-            </div>
-
-            <div>
-                <h3>Alt PlugBoard </h3>
-                <button onClick={() => plugBoard("A")}  className={style} >A</button>
-                <button onClick={() => plugBoard("B")}  className={styleB} >B</button>
-                <button onClick={() => plugBoard("C")}  className={style} >C</button>
-                <button onClick={() => plugBoard("D")}  className={style} >D</button>
-                <button onClick={() => plugBoard("E")}  className={style} >E</button>
-                <button onClick={() => plugBoard("F")}  className={style} >F</button>
-                <button onClick={() => plugBoard("G")}  className={style} >G</button>
-                <button onClick={() => plugBoard("H")}  className={style} >H</button>
-                <button onClick={() => plugBoard("I")}  className={style} >I</button>
-                <button onClick={() => plugBoard("J")}  className={style} >J</button>
-                <button onClick={() => plugBoard("K")}  className={style} >K</button>
-                <button onClick={() => plugBoard("L")}  className={style} >L</button>
-                <button onClick={() => plugBoard("M")}  className={style} >M</button>
-                <button onClick={() => plugBoard("N")}  className={style} >N</button>
-                <button onClick={() => plugBoard("O")}  className={style} >O</button>
-                <button onClick={() => plugBoard("P")}  className={style} >P</button>
-                <button onClick={() => plugBoard("Q")}  className={style} >Q</button>
-                <button onClick={() => plugBoard("R")}  className={style} >R</button>
-                <button onClick={() => plugBoard("S")}  className={style} >S</button>
-                <button onClick={() => plugBoard("T")}  className={style} >T</button>
-                <button onClick={() => plugBoard("U")}  className={style} >U</button>
-                <button onClick={() => plugBoard("V")}  className={style} >V</button>
-                <button onClick={() => plugBoard("W")}  className={style} >W</button>
-                <button onClick={() => plugBoard("X")}  className={style} >X</button>
-                <button onClick={() => plugBoard("Y")}  className={style} >Y</button>
-                <button onClick={() => plugBoard("Z")}  className={style} >Z</button>
-
-
-            </div>
+            
         </div>
     )
 }

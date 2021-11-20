@@ -1,7 +1,46 @@
-.button {
-  background-color: #4caf50;
+.Enigma {
+  /* background-color: grey; */
 }
 
-.condition1 {
-  background-color: red;
+.Header {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.InputSection {
+  text-align: center;
+}
+
+.InputText {
+  text-align: center;
+}
+
+.OutputSection {
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.SettingsSubsection {
+  text-align: center;
+}
+
+.RotorSettings {
+  text-align: center;
+}
+
+.InitialPosition {
+  text-align: center;
+}
+
+.RingSettings {
+  text-align: center;
+}
+
+.ReflectorSettings {
+  text-align: center;
+}
+
+.UserInput {
+  font-size: larger;
+  font-weight: bold;
 }

@@ -3,13 +3,15 @@ import React from 'react'
 const Header = () => {
 
     return (
-        <h1>Enigma Simulation
+        
 
-            <div>
-                Hist 338
+            <div className="Header">
+                <h1>Enigma Simulator Hist 338</h1>
+                
+                
             </div>
 
-        </h1>
+        
     )
 }
 
