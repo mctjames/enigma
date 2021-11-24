@@ -1,14 +1,15 @@
-.Enigma {
-  /* background-color: grey; */
-}
-
 .Header {
   text-align: center;
   padding-bottom: 20px;
 }
 
+#label {
+  color: red;
+}
+
 .InputSection {
   text-align: center;
+  padding-bottom: 25px;
 }
 
 .InputText {
@@ -17,7 +18,6 @@
 
 .OutputSection {
   text-align: center;
-  padding-bottom: 15px;
 }
 
 .SettingsSubsection {
@@ -26,21 +26,29 @@
 
 .RotorSettings {
   text-align: center;
+  padding: 5px;
 }
 
 .InitialPosition {
   text-align: center;
+  padding: 5px;
 }
 
 .RingSettings {
   text-align: center;
+  padding: 5px;
 }
 
 .ReflectorSettings {
   text-align: center;
+  padding: 5px;
 }
 
 .UserInput {
   font-size: larger;
   font-weight: bold;
+}
+
+.Link {
+  padding: 5px;
 }

@@ -1,6 +1,6 @@
 # React Enigma Simulator
 
-This project aimed to recreate the German encryption device, the Enigma Machine, using modern technology specifically React and JavaScript.
+This project aimed to recreate the German encryption device, the Enigma Machine, using modern technology, specifically React and JavaScript.
 
 ## How to Access the Site
 

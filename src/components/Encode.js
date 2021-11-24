@@ -297,7 +297,7 @@ function Encode() {
             
             <div className="RotorSettings">
                 <h2>Rotors settings</h2>
-                <label><a href="https://en.wikipedia.org/wiki/Enigma_machine#Rotors">Rotor types (Walzenlage)</a></label>
+                <label className="Link"><a href="https://en.wikipedia.org/wiki/Enigma_machine#Rotors">Rotor types (Walzenlage)</a></label>
                     <select 
                         className="RotorSubSettings" 
                         defaultValue={rotorOne}
@@ -335,7 +335,7 @@ function Encode() {
                     </select>
             </div>
             <div className="InitialPosition">
-                <label><a href="https://en.wikipedia.org/wiki/Enigma_rotor_details#Rotor_offset">Initial Position (Grundstellung)</a></label>
+                <label className="Link"><a href="https://en.wikipedia.org/wiki/Enigma_rotor_details#Rotor_offset">Initial Position (Grundstellung)</a></label>
 
                 <select 
                     className="InitialSubSettings"
@@ -438,7 +438,7 @@ function Encode() {
 
             </div>
             <div className="RingSettings">
-                <label><a href="https://en.wikipedia.org/wiki/Enigma_rotor_details#Ring_setting">Ring settings (Ringstellung)</a></label>
+                <label className="Link"><a href="https://en.wikipedia.org/wiki/Enigma_rotor_details#Ring_setting">Ring settings (Ringstellung)</a></label>
                 
                 <select 
                     className="RingSubSettings" 
@@ -542,7 +542,7 @@ function Encode() {
             
             <div className="ReflectorSettings">
                 <h2>Reflector settings</h2>
-                <label><a href="https://en.wikipedia.org/wiki/Enigma_machine#Reflector">Reflector type (Umkehrwalze)</a></label>
+                <label className="Link"><a href="https://en.wikipedia.org/wiki/Enigma_machine#Reflector">Reflector type (Umkehrwalze)</a></label>
                 <select 
                     defaultValue={"UKWB"} 
                     className="ReflectorSubSettings" 
