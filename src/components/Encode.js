@@ -155,10 +155,7 @@ function Encode() {
         rotorInputOne = setRing(rotorInputOne, defaultAlphabet.indexOf(ringOne));
         rotorInputTwo = setRing(rotorInputTwo, defaultAlphabet.indexOf(ringTwo));
         rotorInputThree = setRing(rotorInputThree, defaultAlphabet.indexOf(ringThree));
-      
-
-
-
+ 
         //loop through userInput (inputMessage)  
         for(let i = 0; i < input.length; i++){
             // turni the rotor after each key press of the user. 
@@ -235,11 +232,9 @@ function Encode() {
         return(result)
     }
 
-
     var output = encrypt();
     output = output.join("");
     //console.log("output: ", output)
-
 
     return (
         <div className="">
@@ -258,8 +253,7 @@ function Encode() {
                 <label className="UserInput" >Ciphertext</label> 
                 <p style={{color: "red"}}>{output}</p>
             </div>
-
-            
+  
             <div className="RotorSettings">
                 <h2>Rotors settings</h2>
                 <label className="Link"><a href="https://en.wikipedia.org/wiki/Enigma_machine#Rotors">Rotor types (Walzenlage)</a></label>
