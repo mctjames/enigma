@@ -20,13 +20,12 @@ function Encode() {
     }, [inputMessage, rotorOne, rotorTwo, rotorThree, initPosOne, initPosTwo, initPosThree, ringOne, ringTwo, ringThree, reflector, ])  //eslint-disable-line react-hooks/exhaustive-deps
 
     function isValidInput(inputMessage) {
-        inputMessage = inputMessage.replace(/\s/g, '');
         if (/^[a-zA-Z]*$/g.test(inputMessage)){
             //console.log("its a valid input");
         }
         else{
             //console.log("error bad input")
-            alert("Please use only the letters A-Z either upper or lower case.")
+            alert("Please use only the letters A-Z either upper or lower case. No spaces or special characters. If an invalid input is used please delete it and continue.")
         }
     }
 
@@ -181,82 +180,52 @@ function Encode() {
             // position 1 on Rotor I is "k". Therefore K is the current letter. This process repeats for each rotor 
             
             //step 1 get index of user input on a regular alphabet
-            //console.log("Original input was: ", input[i])
             var letterIndex = defaultAlphabet.indexOf(input[i]);
-            //console.log("letterIndex of input letter on a regular alphabet: ", letterIndex)
 
             //Right/fast rotor
             letter = alphabetRight[letterIndex]
-            //console.log("letter @ right side of the first rotor: ", alphabetRight[letterIndex])
             letterIndex = alphabetRight.indexOf(letter)
-            //console.log("letterIndex @ right side of first rotor: ", letterIndex)
             letter = rotorInputOne[letterIndex]
-            //console.log("letter @ left side of first rotor: ", letter)
             letterIndex = alphabetRight.indexOf(letter)
-            //console.log("letterIndex @ left side of first rotor: ", letterIndex)
             
             //Middle/medium rotor
             letter = alphabetMiddle[letterIndex]
-            //console.log("letter @ right side of second rotor: ", letter)
             letterIndex = alphabetMiddle.indexOf(letter)
-            //console.log("letterIndex @ right side of second rotor: ", letterIndex)
             letter = rotorInputTwo[letterIndex]
-            //console.log("letter @ left side of second rotor: ", letter)
             letterIndex = alphabetMiddle.indexOf(letter)
-            //console.log("letterIndex @ left side of second rotor: ", letterIndex)
 
             //Left/slow rotor
             letter = alphabetLeft[letterIndex]
-            //console.log("letter @ right side of third rotor: ", letter)
             letterIndex = alphabetLeft.indexOf(letter)
-            //console.log("letterIndex @ right side of third rotor: ", letterIndex)
             letter = rotorInputThree[letterIndex]
-            //console.log("letter @ left side of third rotor: ", letter)
             letterIndex = alphabetLeft.indexOf(letter)
-            //console.log("letterIndex @ left side of third rotor: ", letterIndex)
 
             // //The reflector. Here the letter that came from the left rotor is matched to a new cypther. UKW-B or UKW-C. This is standard cypher one for one. 
             // // The new letter is passed back into the rotor. 
             // // Note that this process now happens in reverse order. Rotor First then Alphabet. 
             letter = defaultAlphabet[letterIndex]
-            //console.log("letter @ right side of reflector: ", letter)
             letterIndex = defaultAlphabet.indexOf(letter)
-            //console.log("letterIndex @ right side of reflector: ", letterIndex)
             letter = reflectorInput[letterIndex]
-            //console.log("letter @ left side of reflector: ", letter)
             letterIndex = defaultAlphabet.indexOf(letter)
-            //console.log("letterIndex @ right side of the reflector: ", letterIndex)
 
             // We repeat the process of moving through the three rotors but this time from left to right. 
             //Left/slow rotor
             letter = alphabetLeft[letterIndex]
-            //console.log("letter @ left side of third rotor: ", letter)
             letterIndex = rotorInputThree.indexOf(letter)
-            //console.log("letterIndex @ left side of third rotor: ", letterIndex)
             letter = alphabetLeft[letterIndex]
-            //console.log("letter @ right side of third rotor: ", letter)
             letterIndex = alphabetLeft.indexOf(letter)
-            //console.log("letterIndex @ right side of third rotor: ", letterIndex)
-            
+
             //middle/medium rotor
             letter = alphabetMiddle[letterIndex]
-            //console.log("letter @ left side of mid rotor: ", letter)
             letterIndex = rotorInputTwo.indexOf(letter)
-            //console.log("letterIndex @ left side of mid rotor: ", letterIndex)
             letter = alphabetMiddle[letterIndex]
-            //console.log("letter @ right side of mid rotor: ", letter)
             letterIndex = alphabetMiddle.indexOf(letter)                           
-            //console.log("letterIndex @ right side of mid rotor: ", letterIndex)
             
             //right/fast rotor
             letter = alphabetRight[letterIndex]
-            //console.log("letter @ left side of right rotor: ", letter)
             letterIndex = rotorInputOne.indexOf(letter)
-            //console.log("letterIndex @ left side of right rotor: ", letterIndex)
             letter = alphabetRight[letterIndex]
-            //console.log("letter @ right side of right rotor: ", letter)
             letterIndex = alphabetRight.indexOf(letter)
-            //console.log("letterIndex @ right side of right rotor: ", letterIndex)
 
             // output
             letter = defaultAlphabet[letterIndex]
@@ -271,10 +240,6 @@ function Encode() {
     output = output.join("");
     //console.log("output: ", output)
 
-
-   
-    
-   
 
     return (
         <div className="">
